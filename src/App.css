@@ -1,0 +1,27 @@
+#loginForm {
+  max-width: 50vh;
+  margin: 0 auto;
+  padding: 2em;
+  background-color: white;
+  position: relative;
+  top: 2.5em;
+}
+
+#LoginBtn {
+  margin-left: 50%;
+}
+#regLink {
+  margin-left: 78%;
+}
+
+@media only screen and (max-width: 600px) {
+  #loginForm {
+    max-width: 100vh;
+  }
+  #LoginBtn {
+    margin-left: 35%;
+  }
+  #regLink {
+    margin-left: 71%;
+  }
+}
