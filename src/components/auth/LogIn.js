@@ -1,7 +1,21 @@
+import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 const LogIn = () => {
+  let [userName, setUserName] = useState('');
+  let [currentPassword, setPassword] = useState('');
+  let [show, setShow] = useState(false);
+
+  function validateUserName(value) {
+    let lastCharIndex = value.length - 1;
+    if (value[lastCharIndex] === ' ' || value[0] === ' ') {
+      setShow(true);
+    } else {
+      setShow(false);
+    }
+  }
+
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
   };
@@ -32,9 +46,25 @@ const LogIn = () => {
         >
           <Input
             prefix={<UserOutlined className="site-form-item-icon" />}
-            placeholder="Username"
+            placeholder="Username or email address"
+            value={userName}
+            onChange={(e) => {
+              validateUserName(e.target.value);
+              setUserName(e.target.value);
+            }}
           />
+          <p
+            style={{
+              color: 'red',
+              margin: 0,
+              padding: 0,
+              display: show ? 'inline' : 'none',
+            }}
+          >
+            White space is NOT allowed
+          </p>
         </Form.Item>
+
         <Form.Item
           name="password"
           rules={[
@@ -48,6 +78,8 @@ const LogIn = () => {
             prefix={<LockOutlined className="site-form-item-icon" />}
             type="password"
             placeholder="Password"
+            value={currentPassword}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Item>
         <Form.Item>
