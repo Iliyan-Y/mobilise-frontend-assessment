@@ -10,7 +10,7 @@ import {
 import { useState } from 'react';
 
 function App() {
-  let [user, setUser] = useState();
+  let [user, setUser] = useState(window.sessionStorage.getItem('user'));
 
   function renderShop() {
     if (user === 'test') {

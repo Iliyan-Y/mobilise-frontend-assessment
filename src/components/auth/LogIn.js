@@ -21,7 +21,7 @@ const LogIn = ({ setUser }) => {
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
     if (show) return;
-
+    window.sessionStorage.setItem('user', userName);
     setUser(userName);
     history.push('/shop');
   };
