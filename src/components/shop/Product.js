@@ -1,6 +1,23 @@
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
 import { useState } from 'react';
+import { Menu, Dropdown } from 'antd';
+import { DownOutlined } from '@ant-design/icons';
+
+const menu = (
+  <Menu>
+    <Menu.Item key="0">
+      <a href="https://www.facebook.com/">FaceBook</a>
+    </Menu.Item>
+    <Menu.Item key="1">
+      <a href="https://www.instagram.com/">Instagram</a>
+    </Menu.Item>
+    <Menu.Item key="3">
+      <a href="https://twitter.com/">Twitter</a>
+    </Menu.Item>
+  </Menu>
+);
+
 const Product = () => {
   let [index, setIndex] = useState(0);
 
@@ -62,7 +79,21 @@ const Product = () => {
           margin: '0.5em 0',
         }}
       ></div>
-      <p>title</p>
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          width: '96%',
+        }}
+      >
+        <p>title</p>
+        <Dropdown overlay={menu} trigger={['click']}>
+          <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
+            Share <DownOutlined />
+          </a>
+        </Dropdown>
+      </div>
+
       <p style={{ maxWidth: '230px' }}>
         Lorem ipsum or random text may be used
       </p>
