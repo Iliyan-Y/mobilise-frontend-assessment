@@ -58,6 +58,24 @@
   height: 1.2em;
 }
 
+.btn-0 {
+  outline: none;
+}
+
+.btn-0:hover {
+  cursor: pointer;
+  background: rgb(45, 45, 255);
+  color: white;
+  border-radius: 6px;
+}
+
+.btn-round {
+  padding: 12px;
+  border-radius: 15px;
+  border: 0.3px solid grey;
+  margin: 0 0.2em 0.3em;
+}
+
 @media only screen and (max-width: 600px) {
   #loginForm {
     max-width: 100vh;

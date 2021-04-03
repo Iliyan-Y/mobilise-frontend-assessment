@@ -38,29 +38,21 @@ const Product = () => {
         <span>
           Color:{' '}
           <button
+            className="btn-0 btn-round"
             style={{
               background: 'red',
-              borderRadius: '25px',
-              padding: '12px',
             }}
             onClick={() => setIndex(1)}
           ></button>
           <button
+            className="btn-0 btn-round"
             style={{
               background: 'black',
-              borderRadius: '25px',
-              padding: '12px',
             }}
             onClick={() => setIndex(0)}
           ></button>
         </span>
-        <button
-          style={{
-            borderRadius: '14px',
-          }}
-        >
-          Add to cart
-        </button>
+        <button className="btn-0">Add to cart</button>
       </div>
       <div
         style={{
