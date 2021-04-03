@@ -39,6 +39,7 @@ const Card = () => {
   }
   return (
     <div id="PaymentForm">
+      <h3 className="whiteText">Card type</h3>
       <Cards
         cvc={cvc}
         expiry={expiry}
@@ -48,44 +49,97 @@ const Card = () => {
         preview={preview}
         issuer={'visa'}
       />
-      <form>
+      <img
+        src="https://usa.visa.com/dam/VCOM/regional/lac/ENG/Default/Partner%20With%20Us/Payment%20Technology/visapos/full-color-800x450.jpg"
+        alt=""
+        style={{
+          width: '100px',
+          position: 'relative',
+          top: '-9em',
+          left: '18em',
+        }}
+      />
+
+      <form style={{ marginTop: '1em', marginTop: '-2em' }}>
+        <h3 className="whiteText">Name on Card</h3>
+
         <input
+          className="cardIn"
           name="name"
           placeholder="Card Holder Name"
           onChange={(e) => setName(e.target.value)}
           onFocus={handleInputFocus}
         />
+        <br />
+        <h3 className="whiteText">Card Number</h3>
         <input
+          className="cardIn"
           type="tel"
           name="number"
           placeholder="Card Number"
           onChange={handleCardNumber}
           onFocus={handleInputFocus}
         />
+        <br />
+        <span
+          style={{
+            display: 'flex',
+            width: '72%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <h4 className="whiteText">Expiry Date </h4>
+          <h4 className="whiteText">CVC</h4>
+        </span>
 
-        <select onChange={handleDate} id="months" name="months">
-          <option hidden value="MM">
-            MM
-          </option>
-          {months.map((month) => (
-            <option value={month}>{month}</option>
-          ))}
-        </select>
-        <select onChange={handleDate} id="year" name="year">
-          <option hidden value="YYYY">
-            YYYY
-          </option>
-          {years.map((year) => (
-            <option value={year}>{year}</option>
-          ))}
-        </select>
-        <input
-          type="cvc"
-          name="cvc"
-          placeholder="CVC"
-          onChange={(e) => setCvc(e.target.value)}
-          onFocus={handleInputFocus}
-        />
+        <div
+          style={{
+            display: 'flex',
+            width: '95%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <span>
+            <select
+              onFocus={() => setFocus('expiry')}
+              style={{ width: '12vh', padding: '0.3em' }}
+              onChange={handleDate}
+              id="months"
+              name="months"
+            >
+              <option hidden value="MM">
+                MM
+              </option>
+              {months.map((month) => (
+                <option value={month}>{month}</option>
+              ))}
+            </select>
+            <select
+              onFocus={() => setFocus('expiry')}
+              style={{ width: '14vh', padding: '0.3em' }}
+              onChange={handleDate}
+              id="year"
+              name="year"
+            >
+              <option hidden value="YYYY">
+                YYYY
+              </option>
+              {years.map((year) => (
+                <option value={year}>{year}</option>
+              ))}
+            </select>
+          </span>
+          <input
+            style={{ width: '20vh' }}
+            type="cvc"
+            name="cvc"
+            placeholder="CVC"
+            onChange={(e) => setCvc(e.target.value)}
+            onFocus={handleInputFocus}
+          />
+        </div>
+        <br />
+        <input id="check-out-btn" type="submit" value="Check Out" />
       </form>
     </div>
   );

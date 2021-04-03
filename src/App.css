@@ -64,7 +64,7 @@
 
 .btn-0:hover {
   cursor: pointer;
-  background: rgb(45, 45, 255);
+  background: #0275d8;
   color: white;
   border-radius: 6px;
 }
@@ -76,6 +76,33 @@
   margin: 0 0.2em 0.3em;
 }
 
+.whiteText {
+  color: white;
+}
+
+.cardIn {
+  width: 80%;
+  padding: 0.3em;
+  margin-bottom: 0.2em;
+}
+
+#check-out-btn {
+  padding: 1em;
+  width: 50vh;
+  background: #0275d8;
+  color: white;
+  border-radius: 5px;
+  border: 0.3px solid grey;
+}
+
+#check-out-btn:hover {
+  cursor: pointer;
+}
+
+.rccs {
+  position: relative;
+  right: 10em;
+}
 @media only screen and (max-width: 600px) {
   #loginForm {
     max-width: 100vh;
