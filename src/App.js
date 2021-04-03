@@ -8,6 +8,7 @@ import {
   Redirect,
 } from 'react-router-dom';
 import { useState } from 'react';
+import Basket from './components/shop/Basket';
 
 function App() {
   let [user, setUser] = useState(window.sessionStorage.getItem('user'));
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route exact path="/shop">
             {renderShop()}
+          </Route>
+          <Route exact path="/basket">
+            <Basket user={user} />
           </Route>
         </Switch>
       </div>
