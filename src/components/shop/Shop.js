@@ -1,22 +1,17 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Menu } from 'antd';
+import Header from './Header';
+import Content from './Content';
 
-const { Header, Footer, Content } = Layout;
+const { Footer } = Layout;
 
 const Shop = () => {
   return (
-    <div>
-      <Layout>
-        <Header
-          theme={'light'}
-          style={{ position: 'fixed', zIndex: 1, width: '100%' }}
-        >
-          Header
-        </Header>
-        <Content>Content</Content>
-        <Footer>Footer</Footer>
-      </Layout>
-    </div>
+    <Layout>
+      <Header />
+      <Content />
+      <Footer id="footer">Footer</Footer>
+    </Layout>
   );
 };
 
