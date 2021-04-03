@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
+import { useHistory } from 'react-router-dom';
 
-const LogIn = () => {
+const LogIn = ({ setUser }) => {
   let [userName, setUserName] = useState('');
   let [currentPassword, setPassword] = useState('');
   let [show, setShow] = useState(false);
+  let history = useHistory();
 
   function validateUserName(value) {
     let lastCharIndex = value.length - 1;
@@ -18,6 +20,10 @@ const LogIn = () => {
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    if (show) return;
+
+    setUser(userName);
+    history.push('/shop');
   };
 
   return (
@@ -53,18 +59,17 @@ const LogIn = () => {
               setUserName(e.target.value);
             }}
           />
-          <p
-            style={{
-              color: 'red',
-              margin: 0,
-              padding: 0,
-              display: show ? 'inline' : 'none',
-            }}
-          >
-            White space is NOT allowed
-          </p>
         </Form.Item>
-
+        <p
+          style={{
+            color: 'red',
+            margin: 0,
+            padding: 0,
+            display: show ? 'inline' : 'none',
+          }}
+        >
+          White space is NOT allowed
+        </p>
         <Form.Item
           name="password"
           rules={[

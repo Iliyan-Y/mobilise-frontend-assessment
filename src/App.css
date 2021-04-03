@@ -11,7 +11,7 @@
   margin-left: 50%;
 }
 #regLink {
-  margin-left: 78%;
+  margin-left: 71%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -23,5 +23,17 @@
   }
   #regLink {
     margin-left: 71%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  #loginForm {
+    max-width: 55vh;
+  }
+  #LoginBtn {
+    margin-left: 70%;
+  }
+  #regLink {
+    margin-left: 65%;
   }
 }
