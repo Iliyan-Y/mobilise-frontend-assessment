@@ -18,8 +18,27 @@ const menu = (
   </Menu>
 );
 
-const Product = ({ product }) => {
+const Product = ({ product, basketState, setBasketState }) => {
   let [photoIndex, setPhotoIndex] = useState(0);
+
+  function handleAddToCart() {
+    if (!isProductInBasket()) {
+      product.quantity = 1;
+      product.image = product.images[photoIndex].original;
+      setBasketState([...basketState, product]);
+    }
+  }
+
+  function isProductInBasket() {
+    let output = false;
+    basketState.map((basketProduct) => {
+      if (basketProduct.title === product.title) {
+        basketProduct.quantity += 1;
+        output = true;
+      }
+    });
+    return output;
+  }
 
   return (
     <div id="product">
@@ -57,7 +76,9 @@ const Product = ({ product }) => {
             onClick={() => setPhotoIndex(2)}
           ></button>
         </span>
-        <button className="btn-0">Add to cart</button>
+        <button onClick={() => handleAddToCart()} className="btn-0">
+          Add to cart
+        </button>
       </div>
       <div
         style={{

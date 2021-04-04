@@ -111,10 +111,10 @@
   padding: 0.8em;
 }
 
-.rccs {
+/* .rccs {
   position: relative;
   right: 10em;
-}
+} */
 
 .productInCart {
   display: flex;

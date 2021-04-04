@@ -12,10 +12,11 @@ import Basket from './components/shop/Basket';
 
 function App() {
   let [user, setUser] = useState(window.sessionStorage.getItem('user'));
+  let [basketState, setBasketState] = useState([]);
 
   function renderShop() {
     if (user === 'test') {
-      return <Shop />;
+      return <Shop basketState={basketState} setBasketState={setBasketState} />;
     }
     return <Redirect to="/" />;
   }
@@ -31,7 +32,11 @@ function App() {
             {renderShop()}
           </Route>
           <Route exact path="/basket">
-            <Basket user={user} />
+            <Basket
+              user={user}
+              basketState={basketState}
+              setBasketState={setBasketState}
+            />
           </Route>
         </Switch>
       </div>
