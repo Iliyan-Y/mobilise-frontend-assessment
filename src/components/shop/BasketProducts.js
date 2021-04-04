@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const BasketProducts = ({ basketState, setBasketState }) => {
   function handleIncrement(title) {
     let newState = basketState.map((basketProduct) => {
@@ -81,7 +83,7 @@ const BasketProducts = ({ basketState, setBasketState }) => {
           padding: '2em',
         }}
       >
-        <a href="#">{'<-- go back'}</a> <h2>Total: 000</h2>
+        <Link to="/shop">{'<-- Continue Shopping'}</Link> <h2>Total: 000</h2>
       </div>
     </>
   );
