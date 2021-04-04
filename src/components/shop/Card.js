@@ -87,6 +87,7 @@ const Card = () => {
             display: 'flex',
             width: '92%',
             justifyContent: 'space-between',
+            flexWrap: 'wrap',
           }}
         >
           <span>
@@ -120,7 +121,7 @@ const Card = () => {
             </select>
           </span>
           <input
-            style={{ width: '18vh' }}
+            style={{ width: '28%' }}
             type="cvc"
             name="cvc"
             placeholder="CVC"

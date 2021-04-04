@@ -1,7 +1,24 @@
-import { useState } from 'react';
-
 const BasketProducts = ({ basketState, setBasketState }) => {
-  console.log(basketState);
+  function handleIncrement(title) {
+    let newState = basketState.map((basketProduct) => {
+      if (basketProduct.title === title) {
+        basketProduct.quantity += 1;
+      }
+      return basketProduct;
+    });
+    setBasketState(newState);
+  }
+
+  function handleDecrement(title) {
+    let newState = basketState.map((basketProduct) => {
+      if (basketProduct.title === title) {
+        basketProduct.quantity -= 1;
+      }
+      return basketProduct;
+    });
+    setBasketState(newState);
+  }
+
   return (
     <>
       <div id="cart-products">
@@ -27,7 +44,12 @@ const BasketProducts = ({ basketState, setBasketState }) => {
             <div
               style={{ display: 'flex', height: '40px', marginTop: '0.8em' }}
             >
-              <h2>-</h2>
+              <h1
+                className="basket-action-btn"
+                onClick={() => handleDecrement(product.title)}
+              >
+                -
+              </h1>
               <p
                 style={{
                   padding: '0.5em',
@@ -39,7 +61,12 @@ const BasketProducts = ({ basketState, setBasketState }) => {
               >
                 {product.quantity}
               </p>
-              <h2>+</h2>
+              <h1
+                className="basket-action-btn"
+                onClick={() => handleIncrement(product.title)}
+              >
+                +
+              </h1>
             </div>
             <h2 style={{ marginTop: '1em' }}>{product.price}</h2>
             <h2>X</h2>

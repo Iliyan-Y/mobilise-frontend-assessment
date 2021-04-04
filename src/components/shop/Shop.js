@@ -6,7 +6,7 @@ import { mockProductData } from '../../mockProductData';
 const Shop = ({ basketState, setBasketState }) => {
   return (
     <Layout>
-      <Header />
+      <Header basketState={basketState} />
       <Content
         products={mockProductData}
         basketState={basketState}

@@ -3,7 +3,6 @@ import BasketProducts from './BasketProducts';
 import Card from './Card';
 
 const Basket = ({ user, basketState, setBasketState }) => {
-  console.log(basketState);
   if (!user) return 'Please log In';
   return (
     <div style={{ padding: '3.5em' }}>

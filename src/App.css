@@ -88,7 +88,7 @@
 
 #check-out-btn {
   padding: 1em;
-  width: 50vh;
+  width: 80%;
   background: #0275d8;
   color: white;
   border-radius: 5px;
@@ -111,17 +111,20 @@
   padding: 0.8em;
 }
 
-/* .rccs {
-  position: relative;
-  right: 10em;
-} */
-
 .productInCart {
   display: flex;
   justify-content: space-between;
   width: 95%;
   padding: 2.5em;
   border-bottom: 1px solid lightgray;
+}
+
+.basket-action-btn {
+  margin-top: -0.2em;
+}
+
+.basket-action-btn:hover {
+  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {

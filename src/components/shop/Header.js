@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-const Header = () => {
+const Header = ({ basketState }) => {
   return (
     <div id="header">
       <a href="#">Log Our</a>
       <p style={{ margin: '0.1em 1em' }}> | </p>
-      <Link to="/basket">Cart (0)</Link>
+      <Link to="/basket">Cart ({basketState.length})</Link>
     </div>
   );
 };
