@@ -9,7 +9,7 @@ const Card = () => {
   let [name, setName] = useState('');
   let [number, setNumber] = useState('');
   let [selectedYear, setSelectedYear] = useState('');
-  let [selectedMonth, setSelectedMonth] = useState('');
+  let [selectedMonth, setSelectedMonth] = useState();
 
   let [preview, setPreview] = useState(true);
 
@@ -25,7 +25,7 @@ const Card = () => {
 
     if (e.target.name === 'year') {
       setSelectedYear(e.target.value);
-      setExpiry(selectedMonth + e.target.value);
+      setExpiry(selectedMonth ? selectedMonth : 'MM' + e.target.value);
     }
   };
 
@@ -49,18 +49,8 @@ const Card = () => {
         preview={preview}
         issuer={'visa'}
       />
-      <img
-        src="https://usa.visa.com/dam/VCOM/regional/lac/ENG/Default/Partner%20With%20Us/Payment%20Technology/visapos/full-color-800x450.jpg"
-        alt=""
-        style={{
-          width: '100px',
-          position: 'relative',
-          top: '-9em',
-          left: '18em',
-        }}
-      />
 
-      <form style={{ marginTop: '1em', marginTop: '-2em' }}>
+      <form style={{ marginTop: '1em' }}>
         <h3 className="whiteText">Name on Card</h3>
 
         <input
@@ -95,7 +85,7 @@ const Card = () => {
         <div
           style={{
             display: 'flex',
-            width: '95%',
+            width: '92%',
             justifyContent: 'space-between',
           }}
         >
@@ -130,7 +120,7 @@ const Card = () => {
             </select>
           </span>
           <input
-            style={{ width: '20vh' }}
+            style={{ width: '18vh' }}
             type="cvc"
             name="cvc"
             placeholder="CVC"

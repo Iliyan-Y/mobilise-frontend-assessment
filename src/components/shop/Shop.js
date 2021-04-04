@@ -1,16 +1,16 @@
 import React from 'react';
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
 import Header from './Header';
 import Content from './Content';
-
-const { Footer } = Layout;
 
 const Shop = () => {
   return (
     <Layout>
       <Header />
       <Content />
-      <Footer id="footer">Footer</Footer>
+      <div id="footer">
+        <p>Mobilise frontend assessment - Yankov</p>
+      </div>
     </Layout>
   );
 };

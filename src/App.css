@@ -32,7 +32,7 @@
 
 #content {
   margin-top: 3em;
-  min-height: 600px;
+  height: 100vh;
   padding: 1em;
   display: flex;
   flex-wrap: wrap;
@@ -97,6 +97,18 @@
 
 #check-out-btn:hover {
   cursor: pointer;
+}
+
+#footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(7, 46, 78);
+  color: white;
+  text-align: center;
+  height: 3.2em;
+  padding: 0.8em;
 }
 
 .rccs {
