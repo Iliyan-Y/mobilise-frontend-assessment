@@ -2,6 +2,7 @@ export let mockProductData = [
   {
     title: 'Coffee',
     description: 'Lorem ipsum or random text may be used',
+    price: 2.99,
     colors: ['black', 'white'],
     images: [
       {
@@ -25,6 +26,7 @@ export let mockProductData = [
     title: 'Pasta',
     description: 'Lorem ipsum or random text may be used',
     colors: ['green', 'red'],
+    price: 14.4,
     images: [
       {
         original:
@@ -47,6 +49,7 @@ export let mockProductData = [
     title: 'Bread',
     description: 'Lorem ipsum or random text may be used',
     colors: ['#e6c4aa', '#8c603e'],
+    price: 4.0,
     images: [
       {
         original:
@@ -70,6 +73,7 @@ export let mockProductData = [
     title: 'Chia pudding',
     description: 'Lorem ipsum or random text may be used',
     colors: ['purple', 'yellow'],
+    price: 5.0,
     images: [
       {
         original:
@@ -92,6 +96,7 @@ export let mockProductData = [
     title: 'Chocolate',
     description: 'Lorem ipsum or random text may be used',
     colors: ['#45230a', '	#8B4513'],
+    price: 2.85,
     images: [
       {
         original:
@@ -114,6 +119,7 @@ export let mockProductData = [
     title: 'Lentils',
     description: 'Lorem ipsum or random text may be used',
     colors: ['orange', 'darkgreen'],
+    price: 6.1,
     images: [
       {
         original:

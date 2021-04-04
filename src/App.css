@@ -115,6 +115,15 @@
   position: relative;
   right: 10em;
 }
+
+.productInCart {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  padding: 2.5em;
+  border-bottom: 1px solid lightgray;
+}
+
 @media only screen and (max-width: 600px) {
   #loginForm {
     max-width: 100vh;
