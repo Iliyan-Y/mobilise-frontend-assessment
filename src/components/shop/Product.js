@@ -18,21 +18,9 @@ const menu = (
   </Menu>
 );
 
-const Product = () => {
-  let [index, setIndex] = useState(0);
+const Product = ({ product }) => {
+  let [photoIndex, setPhotoIndex] = useState(0);
 
-  const images = [
-    {
-      original:
-        'https://cdn.shopify.com/s/files/1/0651/6375/products/Kenya_360x.jpg?v=1604350798',
-      originalClass: 'productImage',
-    },
-    {
-      original:
-        'https://cdn.shopify.com/s/files/1/0651/6375/products/Honduras2021A_2048x.jpg?v=1611611153',
-      originalClass: 'productImage',
-    },
-  ];
   return (
     <div id="product">
       <ImageGallery
@@ -40,8 +28,8 @@ const Product = () => {
         showFullscreenButton={false}
         showPlayButton={false}
         showBullets={true}
-        items={images}
-        startIndex={index}
+        items={product.images}
+        startIndex={photoIndex}
       />
       <br />
       <div
@@ -57,16 +45,16 @@ const Product = () => {
           <button
             className="btn-0 btn-round"
             style={{
-              background: 'red',
+              background: product.colors[0],
             }}
-            onClick={() => setIndex(1)}
+            onClick={() => setPhotoIndex(1)}
           ></button>
           <button
             className="btn-0 btn-round"
             style={{
-              background: 'black',
+              background: product.colors[1],
             }}
-            onClick={() => setIndex(0)}
+            onClick={() => setPhotoIndex(2)}
           ></button>
         </span>
         <button className="btn-0">Add to cart</button>
@@ -86,7 +74,7 @@ const Product = () => {
           width: '96%',
         }}
       >
-        <p>title</p>
+        <p>{product.title}</p>
         <Dropdown overlay={menu} trigger={['click']}>
           <a className="ant-dropdown-link" onClick={(e) => e.preventDefault()}>
             Share <DownOutlined />
@@ -94,9 +82,7 @@ const Product = () => {
         </Dropdown>
       </div>
 
-      <p style={{ maxWidth: '230px' }}>
-        Lorem ipsum or random text may be used
-      </p>
+      <p style={{ maxWidth: '230px' }}>{product.description}</p>
     </div>
   );
 };
