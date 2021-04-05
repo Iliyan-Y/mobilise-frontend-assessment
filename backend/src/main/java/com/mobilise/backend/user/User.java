@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Repository;
 
 @Repository
-@Document(collation = "users")
+@Document
 public class User {
   @Id
   private String id;

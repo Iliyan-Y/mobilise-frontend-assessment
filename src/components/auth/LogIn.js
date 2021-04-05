@@ -20,6 +20,7 @@ const LogIn = ({ setUser }) => {
 
   const onFinish = (values) => {
     console.log('Received values of form: ', values);
+    console.log(btoa(currentPassword));
     if (show) return;
     window.sessionStorage.setItem('user', userName);
     setUser(userName);

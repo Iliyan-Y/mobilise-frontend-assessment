@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping(path = "api/users")
 public class UserController {
@@ -18,5 +20,10 @@ public class UserController {
   @PostMapping
   public void createPlayer(@RequestBody User user) {
     userService.createUser(user);
+  }
+
+  @PostMapping(path = "login")
+  public String login(@RequestBody Map<String, String > params) {
+   return userService.login(params.get("username"), params.get("password"));
   }
 }
