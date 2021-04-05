@@ -34,7 +34,9 @@ const Card = () => {
 
     if (e.target.name === 'year') {
       setSelectedYear(e.target.value);
-      setExpiry(selectedMonth ? selectedMonth : 'MM' + e.target.value);
+      setExpiry(
+        selectedMonth ? selectedMonth + e.target.value : 'MM' + e.target.value
+      );
     }
   };
 
