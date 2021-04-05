@@ -21,7 +21,9 @@ const BasketProducts = ({ basketState, setBasketState }) => {
   function handleIncrement(title) {
     let newState = basketState.map((basketProduct) => {
       if (basketProduct.title === title) {
-        basketProduct.quantity += 1;
+        if (basketProduct.quantity < 10) {
+          basketProduct.quantity += 1;
+        }
       }
       return basketProduct;
     });
@@ -30,11 +32,16 @@ const BasketProducts = ({ basketState, setBasketState }) => {
 
   function handleDecrement(title) {
     let newState = basketState.map((basketProduct) => {
-      if (basketProduct.title === title) {
+      if (basketProduct.title === title && basketProduct.quantity > 1) {
         basketProduct.quantity -= 1;
       }
       return basketProduct;
     });
+    setBasketState(newState);
+  }
+
+  function handleRemove(title) {
+    let newState = basketState.filter((product) => product.title !== title);
     setBasketState(newState);
   }
 
@@ -66,6 +73,7 @@ const BasketProducts = ({ basketState, setBasketState }) => {
               <h1
                 className="basket-action-btn"
                 onClick={() => handleDecrement(product.title)}
+                style={{ color: product.quantity === 1 ? 'grey' : 'black' }}
               >
                 -
               </h1>
@@ -82,6 +90,7 @@ const BasketProducts = ({ basketState, setBasketState }) => {
               </p>
               <h1
                 className="basket-action-btn"
+                style={{ color: product.quantity === 10 ? 'grey' : 'black' }}
                 onClick={() => handleIncrement(product.title)}
               >
                 +
@@ -90,7 +99,12 @@ const BasketProducts = ({ basketState, setBasketState }) => {
             <h2 style={{ marginTop: '1em' }}>
               {parseFloat(product.price).toFixed(2)}
             </h2>
-            <h2>X</h2>
+            <h2
+              className="basket-action-btn"
+              onClick={() => handleRemove(product.title)}
+            >
+              X
+            </h2>
           </div>
         ))}
       </div>
