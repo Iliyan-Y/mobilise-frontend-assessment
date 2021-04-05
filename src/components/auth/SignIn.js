@@ -1,15 +1,17 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-const LogIn = ({ setUser }) => {
+const SignIn = ({ setUser }) => {
   let [username, setUsername] = useState('');
   let [currentPassword, setPassword] = useState('');
   let [show, setShow] = useState(false);
   let history = useHistory();
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
 
   function validateUserName(value) {
     let lastCharIndex = value.length - 1;
@@ -21,14 +23,15 @@ const LogIn = ({ setUser }) => {
   }
 
   const onFinish = (values) => {
-    console.log('Received values of form: ', values);
     if (show) return;
     let body = {
       username,
       password: currentPassword,
+      firstName,
+      lastName,
     };
     axios
-      .post('api/users/login', body)
+      .post('api/users', body)
       .then((res) => {
         window.sessionStorage.setItem('user', res.data);
         setUser(res.data);
@@ -36,15 +39,7 @@ const LogIn = ({ setUser }) => {
       })
       .catch((err) => {
         console.error(err.message);
-        if (username !== 'test') {
-          alert(
-            'User not exist, if you are testing pleas login with username test and any password'
-          );
-        } else {
-          window.sessionStorage.setItem('user', username);
-          setUser(username);
-          history.push('/shop');
-        }
+        alert('Something went wrong please try again later');
       });
   };
 
@@ -60,7 +55,7 @@ const LogIn = ({ setUser }) => {
         onFinish={onFinish}
       >
         <Form.Item>
-          <h3 style={{ marginLeft: '41%' }}>Sign In</h3>
+          <h3 style={{ marginLeft: '41%' }}>Sign Up</h3>
         </Form.Item>
 
         <Form.Item
@@ -109,34 +104,41 @@ const LogIn = ({ setUser }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Item>
+        <Form.Item name="firstName">
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="First Name"
+            value={firstName}
+            onChange={(e) => {
+              setFirstName(e.target.value);
+            }}
+          />
+        </Form.Item>
+        <Form.Item name="lastName">
+          <Input
+            prefix={<UserOutlined className="site-form-item-icon" />}
+            placeholder="Last Name"
+            value={lastName}
+            onChange={(e) => {
+              setLastName(e.target.value);
+            }}
+          />
+        </Form.Item>
         <Form.Item>
-          <Form.Item name="remember" valuePropName="unchecked" noStyle>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
           <Button
             type="primary"
             htmlType="submit"
             className="login-form-button"
             id="LoginBtn"
           >
-            Log in
+            Sign Up
           </Button>{' '}
           <br />
-          <Link to="/signup">Register now!</Link>
-        </Form.Item>
-
-        <Form.Item>
-          <a className="login-form-forgot" href="">
-            Forgot password
-          </a>{' '}
-          <br />
-          <a className="login-form-forgot" href="">
-            Resend verification email
-          </a>
+          <Link to="/">Log In</Link>
         </Form.Item>
       </Form>
     </div>
   );
 };
 
-export default LogIn;
+export default SignIn;

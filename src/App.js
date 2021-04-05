@@ -9,13 +9,14 @@ import {
 } from 'react-router-dom';
 import { useState } from 'react';
 import Basket from './components/shop/Basket';
+import SignIn from './components/auth/SignIn';
 
 function App() {
   let [user, setUser] = useState(window.sessionStorage.getItem('user'));
   let [basketState, setBasketState] = useState([]);
 
   function renderShop() {
-    if (user === 'test') {
+    if (user) {
       return <Shop basketState={basketState} setBasketState={setBasketState} />;
     }
     return <Redirect to="/" />;
@@ -27,6 +28,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <LogIn setUser={setUser} />
+          </Route>
+          <Route exact path="/signup">
+            <SignIn setUser={setUser} />
           </Route>
           <Route exact path="/shop">
             {renderShop()}
