@@ -1,6 +1,23 @@
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 const BasketProducts = ({ basketState, setBasketState }) => {
+  let [totalAmount, setTotalAmount] = useState(calculateTotal());
+
+  useEffect(() => {
+    setTotalAmount(calculateTotal());
+  }, [basketState]);
+
+  function calculateTotal() {
+    let total = 0;
+    if (basketState.length > 0) {
+      basketState.map((product) => {
+        total += product.price * product.quantity;
+      });
+    }
+    return parseFloat(total).toFixed(2);
+  }
+
   function handleIncrement(title) {
     let newState = basketState.map((basketProduct) => {
       if (basketProduct.title === title) {
@@ -70,7 +87,9 @@ const BasketProducts = ({ basketState, setBasketState }) => {
                 +
               </h1>
             </div>
-            <h2 style={{ marginTop: '1em' }}>{product.price}</h2>
+            <h2 style={{ marginTop: '1em' }}>
+              {parseFloat(product.price).toFixed(2)}
+            </h2>
             <h2>X</h2>
           </div>
         ))}
@@ -83,7 +102,8 @@ const BasketProducts = ({ basketState, setBasketState }) => {
           padding: '2em',
         }}
       >
-        <Link to="/shop">{'<-- Continue Shopping'}</Link> <h2>Total: 000</h2>
+        <Link to="/shop">{'<-- Continue Shopping'}</Link>{' '}
+        <h2>Total: {totalAmount}</h2>
       </div>
     </>
   );
