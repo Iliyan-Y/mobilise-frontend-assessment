@@ -127,6 +127,19 @@
   cursor: pointer;
 }
 
+#paymentAlert {
+  position: absolute;
+  top: 4.5em;
+  left: -25em;
+  border: 3px solid black;
+  background: #757575;
+  width: 40em;
+  z-index: 2;
+  text-align: center;
+  border-radius: 6px;
+  padding: 10em;
+}
+
 @media only screen and (max-width: 600px) {
   #loginForm {
     max-width: 100vh;

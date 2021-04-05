@@ -12,6 +12,15 @@ const Card = () => {
   let [selectedMonth, setSelectedMonth] = useState();
 
   let [preview, setPreview] = useState(true);
+  let [displayBox, setDisplayBox] = useState(false);
+
+  function handleCheckout(e) {
+    e.preventDefault();
+    setDisplayBox(true);
+    setTimeout(function () {
+      setDisplayBox(false);
+    }, 5000);
+  }
 
   let handleInputFocus = (e) => {
     setFocus(e.target.name);
@@ -39,6 +48,14 @@ const Card = () => {
   }
   return (
     <div id="PaymentForm">
+      <div
+        id="paymentAlert"
+        style={{
+          display: displayBox ? 'block' : 'none',
+        }}
+      >
+        <h1>Processing Payment</h1>
+      </div>
       <h3 className="whiteText">Card type</h3>
       <Cards
         cvc={cvc}
@@ -50,7 +67,7 @@ const Card = () => {
         issuer={'visa'}
       />
 
-      <form style={{ marginTop: '1em' }}>
+      <form style={{ marginTop: '1em' }} onSubmit={handleCheckout}>
         <h3 className="whiteText">Name on Card</h3>
 
         <input
