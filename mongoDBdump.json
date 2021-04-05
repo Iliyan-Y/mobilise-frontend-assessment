@@ -1,0 +1,37 @@
+[{
+  "_id": {
+    "$oid": "606ad80e95a7c94817fa3ad0"
+  },
+  "username": "test00",
+  "password": "pjdS+AUcEB93pQjQyayvyQ==",
+  "firstName": "Okto",
+  "lastName": "nokto",
+  "_class": "com.mobilise.backend.user.User"
+},{
+  "_id": {
+    "$oid": "606aee0f28c6973ac5cff734"
+  },
+  "username": "John@music.com",
+  "password": "tvyR7/fuLaLcEY2MZnr4rg==",
+  "firstName": "John",
+  "lastName": "Lennon",
+  "_class": "com.mobilise.backend.user.User"
+},{
+  "_id": {
+    "$oid": "606aee4728c6973ac5cff735"
+  },
+  "username": "NikolaPower",
+  "password": "9FupeTmVR9pKrKg4ssaWrA==",
+  "firstName": "Nikola",
+  "lastName": "Tesla",
+  "_class": "com.mobilise.backend.user.User"
+},{
+  "_id": {
+    "$oid": "606aee6b28c6973ac5cff736"
+  },
+  "username": "Nasa@example.com",
+  "password": "vUkXGERRREBON1cBkqj2Dw==",
+  "firstName": "NASA",
+  "lastName": "SPACE",
+  "_class": "com.mobilise.backend.user.User"
+}]
