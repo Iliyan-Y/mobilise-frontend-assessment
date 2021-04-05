@@ -6,6 +6,9 @@ import org.jasypt.util.text.StrongTextEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+import java.util.Optional;
+
 @Service
 public class UserService {
   private final UserRepository userRepository;
@@ -22,19 +25,24 @@ public class UserService {
         .orElseThrow(() -> new IllegalStateException("User not found"));
   }
 
-  public void createUser(User user) {
+  public Map<String, String> createUser(User user) {
+    Optional<User> isUser = userRepository.findByUsername(user.getUsername());
+    if (isUser.isPresent()) {
+      throw new IllegalStateException("User already exists");
+    }
+
     user.setPassword(encrypt(user.getPassword()));
     userRepository.save(user);
-    System.out.println("Player " + user + " created !");
+    System.out.println("Player " + user.toString() + " created !");
+    return user.toJson();
   }
 
-  public String login(String username, String password){
+  public Map<String, String> login(String username, String password){
     User user = getUserByUsername(username);
     if (decrypt(user.getPassword()).equals(password)) {
-      System.out.println("SUCCESS");
-      return user.getUsername();
+      return Map.of("userId", user.getId(), "username", user.getUsername());
     }else {
-      return "Incorrect password";
+      return Map.of("message","Incorrect password");
     }
 
   }

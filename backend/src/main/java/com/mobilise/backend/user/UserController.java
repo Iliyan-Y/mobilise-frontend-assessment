@@ -18,12 +18,12 @@ public class UserController {
   }
 
   @PostMapping
-  public void createPlayer(@RequestBody User user) {
-    userService.createUser(user);
+  public Map<String, String> createPlayer(@RequestBody User user) {
+    return userService.createUser(user);
   }
 
   @PostMapping(path = "login")
-  public String login(@RequestBody Map<String, String > params) {
+  public Map<String, String> login(@RequestBody Map<String, String > params) {
    return userService.login(params.get("username"), params.get("password"));
   }
 }
